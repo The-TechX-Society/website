@@ -10,10 +10,7 @@ import { useState, type SubmitEvent } from "react";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 
-export function ForgotPasswordForm({
-	className,
-	...props
-}: React.ComponentPropsWithoutRef<"div">) {
+export function ForgotPasswordForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
 	const [email, setEmail] = useState("");
 	const [error, setError] = useState<string | null>(null);
 	const [success, setSuccess] = useState(false);
@@ -48,18 +45,15 @@ export function ForgotPasswordForm({
 					<div>Check Your Email</div>
 					<div>Password reset instructions sent</div>
 					<p>
-						If you registered using your email and password, you will receive a
-						password reset email.
+						If you registered using your email and password, you will receive a password reset
+						email.
 					</p>
 				</div>
 			) : (
 				<div>
 					<div>
 						<h1 className="text-2xl">Reset Your Password</h1>
-						<p>
-							Type in your email and we&apos;ll send you a link to reset your
-							password
-						</p>
+						<p>Type in your email and we&apos;ll send you a link to reset your password</p>
 					</div>
 					<div>
 						<form onSubmit={handleForgotPassword}>
@@ -82,10 +76,7 @@ export function ForgotPasswordForm({
 							</div>
 							<div className="mt-4 text-center text-sm">
 								Already have an account?{" "}
-								<Link
-									href="/auth/login"
-									className="underline underline-offset-4"
-								>
+								<Link href="/auth/login" className="underline underline-offset-4">
 									Login
 								</Link>
 							</div>

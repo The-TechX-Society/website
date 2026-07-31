@@ -11,10 +11,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 
-export function LoginForm({
-	className,
-	...props
-}: React.ComponentPropsWithoutRef<"div">) {
+export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
@@ -88,10 +85,7 @@ export function LoginForm({
 						</div>
 						<div className="mt-4 text-center text-sm">
 							Don&apos;t have an account?{" "}
-							<Link
-								href="/auth/sign-up"
-								className="underline underline-offset-4"
-							>
+							<Link href="/auth/sign-up" className="underline underline-offset-4">
 								Sign up
 							</Link>
 						</div>
