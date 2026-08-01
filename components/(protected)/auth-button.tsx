@@ -8,25 +8,25 @@ import { createClient } from "@/lib/supabase/server";
 import { LogoutButton } from "@/components/(protected)/logout-button";
 
 export async function AuthButton() {
-    const supabase = await createClient();
+	const supabase = await createClient();
 
-    const { data } = await supabase.auth.getClaims();
+	const { data } = await supabase.auth.getClaims();
 
-    const user = data?.claims;
+	const user = data?.claims;
 
-    return user ? (
-        <div className="flex items-center gap-4">
-            Hey, {user.email}!
-            <LogoutButton />
-        </div>
-    ) : (
-        <div className="flex gap-2">
-            <button type="button">
-                <Link href="/auth/login">Sign in</Link>
-            </button>
-            <button type="button">
-                <Link href="/auth/sign-up">Sign up</Link>
-            </button>
-        </div>
-    );
+	return user ? (
+		<div className="flex items-center gap-4">
+			Hey, {user.email}!
+			<LogoutButton />
+		</div>
+	) : (
+		<div className="flex gap-2">
+			<button type="button">
+				<Link href="/auth/login">Sign in</Link>
+			</button>
+			<button type="button">
+				<Link href="/auth/sign-up">Sign up</Link>
+			</button>
+		</div>
+	);
 }
