@@ -3,7 +3,7 @@
 // external
 
 // internal
-import { LoginForm } from "@/components/login-form";
+import { LoginForm } from "@/components/auth/login/login-form";
 
 export default function Page() {
 	return (

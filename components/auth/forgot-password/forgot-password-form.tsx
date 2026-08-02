@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState, type SubmitEvent } from "react";
 
 // internal
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/tailwind/utils";
 import { createClient } from "@/lib/supabase/client";
 
 export function ForgotPasswordForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
