@@ -5,11 +5,14 @@
 @layer base {
     :root {
         --primary-1: #38b6ff;
-        --primary-2: #3ca0d8;
-
-        --secondary-1: #e2e4e5;
+        --primary-2: #269ade;
+        --primary-3: #1690d6;
+        --primary-4: #6d9bb6;
 
         --accent-1: #731f6c;
+        --accent-2: #84227b;
+        --accent-3: #93228a;
+        --accent-4: #ad80a9;
 
         --neutral-1: #0b1215;
         --neutral-2: #021a27;
