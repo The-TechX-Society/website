@@ -4,11 +4,12 @@
 
 // internal
 import Button from "@/components/ui/button";
+import { ComponentVariant } from "@/lib/ui/variants";
 
 export default function UITest() {
     return (
         <div className="p-4 space-y-2">
-            <Button variant="primary">Hello there</Button>
+            <Button variant={ComponentVariant.ACCENT}>Hello there</Button>
 
             <p style={{ fontWeight: 300 }}>What is up everyone?</p>
             <p style={{ fontWeight: 300 }}>
