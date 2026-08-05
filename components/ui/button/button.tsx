@@ -6,9 +6,10 @@ import type { ComponentProps } from "react";
 
 // internal
 import "./button.css";
+import type { ComponentVariant, ComponentVariations } from "@/lib/ui/variants";
 
-interface ButtonProps extends ComponentProps<typeof BaseButton> {
-    variant: 'primary' | 'accent'
+interface ButtonProps extends ComponentProps<typeof BaseButton>, ComponentVariations {
+    variant: ComponentVariant
 }
 
 export function Button({ children, ref, variant, ...props }: ButtonProps) {
