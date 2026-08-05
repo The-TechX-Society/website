@@ -40,3 +40,27 @@
         outline-offset: -1px;
     }
 }
+
+.primary {
+    --btn-background-color: var(--primary-1);
+    --btn-border-color: var(--neutral-1);
+    --btn-text-color: var(--neutral-1);
+    --btn-hover-color: var(--primary-2);
+    --btn-active-color: var(--primary-3);
+    --btn-disabled-color: var(--neutral-1);
+    --btn-disabled-background-color: var(--primary-4);
+    --btn-disabled-border-color: var(--neutral-1);
+    --btn-focus-color: var(--primary-3);
+}
+
+.accent {
+    --btn-background-color: var(--accent-1);
+    --btn-border-color: var(--neutral-3);
+    --btn-text-color: var(--neutral-3);
+    --btn-hover-color: var(--accent-2);
+    --btn-active-color: var(--accent-3);
+    --btn-disabled-color: var(--neutral-4);
+    --btn-disabled-background-color: var(--accent-4);
+    --btn-disabled-border-color: var(--neutral-4);
+    --btn-focus-color: var(--accent-3);
+}
