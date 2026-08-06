@@ -8,7 +8,7 @@ import { ComponentVariant } from "@/lib/ui/variants";
 
 export default function UITest() {
     return (
-        <div className="p-4 space-y-2">
+        <div className="p-4 space-y-12">
             <Button variant={ComponentVariant.ACCENT}>Hello there</Button>
 
             <p style={{ fontWeight: 300 }}>What is up everyone?</p>
@@ -35,6 +35,8 @@ export default function UITest() {
             <p style={{ fontWeight: 900 }}>
                 <i>What is up everyone?</i>
             </p>
+
+            <Button variant={ComponentVariant.ACCENT}>Hello there</Button>
         </div>
     );
 }
