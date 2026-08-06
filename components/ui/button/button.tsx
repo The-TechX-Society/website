@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // builtin
 
 // external
@@ -7,27 +7,24 @@ import { motion } from "motion/react";
 import type { ComponentProps } from "react";
 
 import "./button.css";
-import type { ComponentVariant, ComponentVariations } from "@/lib/ui/variants";
+import type { ColorVariant, ColorVariations } from "@/lib/color/variants";
+import { getMotionProps } from "@/lib/animation/motion-props";
+import type { AnimationVariant } from "@/lib/animation/variants";
 
-interface ButtonProps extends ComponentProps<typeof BaseButton>, ComponentVariations {
-    variant: ComponentVariant
+interface ButtonProps extends ComponentProps<typeof BaseButton>, ColorVariations {
+	color: ColorVariant;
+	animation: AnimationVariant;
 }
 
-export function Button({ children, ref, variant, ...props }: ButtonProps) {
-
-    return (
-        <BaseButton
-            ref={ref}
-            className={`button ${variant}`}
-            render={
-                <motion.button
-                    initial={{ y: 10, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                />
-            }
-            {...props}
-        >
-            {children}
-        </BaseButton>
-    );
+export function Button({ children, ref, color, animation, ...props }: ButtonProps) {
+	return (
+		<BaseButton
+			ref={ref}
+			className={`button ${color}`}
+			render={<motion.button {...getMotionProps(animation)} />}
+			{...props}
+		>
+			{children}
+		</BaseButton>
+	);
 }
