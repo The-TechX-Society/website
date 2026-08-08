@@ -4,13 +4,12 @@
 
 // internal
 import Button from "@/components/ui/button";
-import { AnimationVariant } from "@/lib/animation/variants";
 import { ColorVariant } from "@/lib/color/variants";
 
 export default function UITest() {
 	return (
 		<div className="p-4 space-y-12">
-			<Button color={ColorVariant.ACCENT} animation={AnimationVariant.SCROLL_FADE_UP}>
+			<Button color={ColorVariant.ACCENT} animation="scrollFadeIn">
 				Hello there
 			</Button>
 
@@ -39,7 +38,7 @@ export default function UITest() {
 				<i>What is up everyone?</i>
 			</p>
 
-			<Button color={ColorVariant.ACCENT} animation={AnimationVariant.SCROLL_FADE_UP}>
+			<Button color={ColorVariant.ACCENT} animation="scrollFadeIn">
 				Hello there
 			</Button>
 		</div>
