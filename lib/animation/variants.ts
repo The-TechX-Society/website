@@ -11,3 +11,7 @@ export type AnimationConfig = ScrollFadeInConfig;
 type AnimationType = AnimationConfig["type"];
 
 export type AnimationVariant = AnimationType | AnimationConfig;
+
+export interface AnimationVariations {
+	animation: AnimationVariant;
+}

@@ -6,13 +6,15 @@ import { Button as BaseButton } from "@base-ui/react";
 import { motion } from "motion/react";
 import type { ComponentProps } from "react";
 
+// internal
 import "./button.css";
-import type { ColorVariant, ColorVariations } from "@/lib/color/variants";
-import { getMotionProps } from "@/lib/animation/motion-props";
-import type { AnimationVariant } from "@/lib/animation/variants";
+import type { ColorVariations } from "@/lib/color";
+import { type AnimationVariant, type AnimationVariations, getMotionProps } from "@/lib/animation";
 
-interface ButtonProps extends ComponentProps<typeof BaseButton>, ColorVariations {
-	color: ColorVariant;
+interface ButtonProps
+	extends ComponentProps<typeof BaseButton>,
+		ColorVariations,
+		AnimationVariations {
 	animation: AnimationVariant;
 }
 
