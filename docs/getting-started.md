@@ -23,25 +23,29 @@ website/
             | - page.tsx <-- What to show when you go to http://localhost:3000/auth-test
         | - ...
         | - layout.tsx <-- Common structure of all subpages of (protected)
-    | - auth/ <-- all auth-related pages (generated from the template)
-        | - confirm
-            | - route.ts <-- this is a REST API route (backend logic)
-        | - ...
+    | - (public)/ <-- all routes visible to anyone    
+        | - auth/ <-- all auth-related pages (generated from the template)
+            | - confirm
+                | - route.ts <-- this is a REST API route (backend logic)
+            | - ...
     | - page.tsx <-- Displayed at http://localhost:3000/ (index route)
     | - ...
 | - components/ <-- mirrors structure of app, holds UI 
     | - (protected)/
         | - ... 
-    | - auth/
-        | - forgot-password/ <-- the directory stores components used in the corresponding page
-            | - forgot-password-form.tsx
+    | - (public)/     
+        | - auth/
+            | - forgot-password/ <-- the directory stores components used in the corresponding page
+                | - forgot-password-form.tsx
+            | - ...
+    | - ui/ <-- reusuable UI components
+        | - ...        
 | - lib/ <-- for logic and utilities
     | - config/
         | - routes.ts <-- configuration for which endpoints are public vs protected
     | - supabase/
         | - ...
-    | - tailwind/
-        | - ...
+    | - ...
 | - .env.local <-- make this!
 | - biome.json <-- linter configuration
 | - package.json <-- commands, scripts, and project config
