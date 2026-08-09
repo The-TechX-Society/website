@@ -1,3 +1,3 @@
-import type { ColorVariations } from "./variants";
+import type { ColoredComponent } from "./variants";
 
-export type { ColorVariations };
+export type { ColoredComponent };

@@ -4,8 +4,8 @@
 
 // internal
 
-type ColorVariants = "primary" | "accent";
+type ColorScheme = "primary" | "accent";
 
-export interface ColorVariations {
-	color: ColorVariants;
+export interface ColoredComponent {
+	color: ColorScheme;
 }
