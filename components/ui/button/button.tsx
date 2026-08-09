@@ -8,24 +8,23 @@ import type { ComponentProps } from "react";
 
 // internal
 import "./button.css";
-import type { ColorVariations } from "@/lib/color";
+import type { ColoredComponent } from "@/lib/color";
 import { type AnimatedComponent, getMotionProps } from "@/lib/animation";
 
 interface ButtonProps
-    extends ComponentProps<typeof BaseButton>,
-    ColorVariations,
-    AnimatedComponent {
-}
+	extends ComponentProps<typeof BaseButton>,
+		ColoredComponent,
+		AnimatedComponent {}
 
 export function Button({ children, ref, color, animation, ...props }: ButtonProps) {
-    return (
-        <BaseButton
-            ref={ref}
-            className={`button ${color}`}
-            render={<motion.button {...getMotionProps(animation)} />}
-            {...props}
-        >
-            {children}
-        </BaseButton>
-    );
+	return (
+		<BaseButton
+			ref={ref}
+			className={`button ${color}`}
+			render={<motion.button {...getMotionProps(animation)} />}
+			{...props}
+		>
+			{children}
+		</BaseButton>
+	);
 }
