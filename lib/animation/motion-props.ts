@@ -1,33 +1,48 @@
 // builtin
 
 // external
-import type { MotionProps } from "motion/react";
+import { stagger, type Transition, type MotionProps } from "motion/react";
 
 // internal
 import { throwIfNotExhaustive } from "@/lib/utils/type-safety";
-import type { AnimationVariant, AnimationConfig } from "./variants";
+import type { AnimationScheme, AnimationConfig } from "./scheme";
 import { getScrollFadeInMotionProps } from "./scroll-fade-in/animation";
 import type { BaseAnimationConfig } from "./configs";
 
-export function getMotionProps(variant?: AnimationVariant | MotionProps): MotionProps {
-	if (!variant) return {};
+export function getMotionProps(variant?: AnimationScheme, isChild?: boolean): MotionProps {
+    if (!variant) return {};
 
-	if (typeof variant === "object" && !("type" in variant)) {
-		return variant;
-	}
+    if (typeof variant === "object" && !("type" in variant)) {
+        return variant;
+    }
 
-	const config: AnimationConfig = typeof variant === "string" ? { type: variant } : variant;
+    const config: AnimationConfig = typeof variant === "string" ? { type: variant } : variant;
 
-	switch (config.type) {
-		case "scrollFadeIn":
-			return getScrollFadeInMotionProps(config);
-		default:
-			throwIfNotExhaustive(config);
-	}
+    switch (config.type) {
+        case "scrollFadeIn":
+            return getScrollFadeInMotionProps(config, isChild);
+        default:
+            throwIfNotExhaustive(config);
+    }
 }
 
-export function getDefaultMotionProps(config: BaseAnimationConfig): Partial<MotionProps> {
-	const { duration = 0.3, delay = 0 } = config;
+export function getDefaultPreTransition(config: BaseAnimationConfig): Transition {
+    const { duration = 0.3, delay = 0, staggerChildren = 0.3 } = config;
 
-	return { transition: { duration, delay } };
+    return {
+        duration,
+        delay,
+        when: "beforeChildren",
+        delayChildren: stagger(staggerChildren)
+    }
+}
+
+export function getDefaultPostTransition(config: BaseAnimationConfig): Transition {
+    const { duration = 0.3, delay = 0 } = config;
+
+    return {
+        duration,
+        delay,
+        when: "afterchildren"
+    }
 }

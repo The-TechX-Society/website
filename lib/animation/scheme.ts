@@ -1,6 +1,7 @@
 // builtin
 
 // external
+import type { MotionProps } from "motion/react";
 
 // internal
 import type { ScrollFadeInConfig } from "./scroll-fade-in/animation";
@@ -10,8 +11,9 @@ export type AnimationConfig = ScrollFadeInConfig;
 
 type AnimationType = AnimationConfig["type"];
 
-export type AnimationVariant = AnimationType | AnimationConfig;
+export type AnimationScheme = AnimationType | AnimationConfig | MotionProps;
 
-export interface AnimationVariations {
-	animation: AnimationVariant;
+export interface AnimatedComponent {
+    animation?: AnimationScheme;
+    isChildAnimation?: boolean;
 }

@@ -1,4 +1,4 @@
-import type { AnimationVariant, AnimationConfig, AnimationVariations } from "./variants";
+import type { AnimationScheme, AnimationConfig, AnimatedComponent } from "./scheme";
 import { getMotionProps } from "./motion-props";
 
-export { type AnimationVariant, type AnimationConfig, type AnimationVariations, getMotionProps };
+export { type AnimationScheme, type AnimationConfig, type AnimatedComponent, getMotionProps };
