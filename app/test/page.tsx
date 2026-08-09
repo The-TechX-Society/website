@@ -4,11 +4,12 @@
 
 // internal
 import Button from "@/components/ui/button";
+import Div from "@/components/ui/div";
 
 export default function UITest() {
 	return (
 		<div className="p-4 space-y-12">
-			<Button color="accent" animation="scrollFadeIn">
+			<Button colorScheme="accent" animationScheme="scrollFadeIn">
 				Hello there
 			</Button>
 
@@ -37,9 +38,19 @@ export default function UITest() {
 				<i>What is up everyone?</i>
 			</p>
 
-			<Button color="accent" animation="scrollFadeIn">
-				Hello there
-			</Button>
+			<Div className="space-y-3" animationScheme="scrollFadeIn">
+				<Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>
+					Hello there
+				</Button>
+
+				<Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>
+					Hello there 2
+				</Button>
+
+				<Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>
+					Hello there 3
+				</Button>
+			</Div>
 		</div>
 	);
 }
