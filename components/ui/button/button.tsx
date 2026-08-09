@@ -13,15 +13,22 @@ import { type AnimatedComponent, getMotionProps } from "@/lib/animation";
 
 interface ButtonProps
 	extends ComponentProps<typeof BaseButton>,
-		ColoredComponent,
-		AnimatedComponent {}
+		AnimatedComponent,
+		ColoredComponent {}
 
-export function Button({ children, ref, color, animation, ...props }: ButtonProps) {
+export function Button({
+	children,
+	ref,
+	animationScheme,
+	childAnimation,
+	colorScheme,
+	...props
+}: ButtonProps) {
 	return (
 		<BaseButton
 			ref={ref}
-			className={`button ${color}`}
-			render={<motion.button {...getMotionProps(animation)} />}
+			className={`button ${colorScheme}`}
+			render={<motion.button {...getMotionProps(animationScheme, childAnimation)} />}
 			{...props}
 		>
 			{children}
