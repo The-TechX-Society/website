@@ -4,24 +4,41 @@
 import type { MotionProps } from "motion/react";
 
 // internal
-import { getDefaultMotionProps } from "../motion-props";
+import { getDefaultPostTransition, getDefaultPreTransition } from "../motion-props";
 import type { BaseAnimationConfig } from "../configs";
 
 export interface ScrollFadeInConfig extends BaseAnimationConfig {
-	type: "scrollFadeIn";
-	startX?: number;
-	startY?: number;
-	startOpacity?: number;
-	endOpacity?: number;
+    type: "scrollFadeIn";
+    startX?: number;
+    startY?: number;
+    startOpacity?: number;
+    endOpacity?: number;
 }
 
-export function getScrollFadeInMotionProps(config: ScrollFadeInConfig): MotionProps {
-	const baseProps = getDefaultMotionProps(config);
-	const { startX = 0, startY = 10, startOpacity = 0, endOpacity = 1 } = config;
+export function getScrollFadeInMotionProps(config: ScrollFadeInConfig, isChild?: boolean): MotionProps {
+    const { startX = 0, startY = 10, startOpacity = 0, endOpacity = 1 } = config;
 
-	return {
-		...baseProps,
-		initial: { x: startX, y: startY, opacity: startOpacity },
-		whileInView: { x: 0, y: 0, opacity: endOpacity },
-	};
+    const variants = {
+        visible: {
+            x: 0, y: 0, opacity: endOpacity,
+            transition: getDefaultPreTransition(config)
+        },
+        hidden: {
+            x: startX, y: startY, opacity: startOpacity,
+            transition: getDefaultPostTransition(config)
+        }
+    }
+
+    if (isChild) {
+        return {
+            variants,
+        };
+    }
+
+    return {
+        variants,
+        initial: "hidden",
+        whileInView: "visible",
+    };
+
 }
