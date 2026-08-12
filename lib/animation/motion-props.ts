@@ -27,13 +27,11 @@ export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): Mot
 }
 
 export function getDefaultPreTransition(config: BaseAnimationConfig): Transition {
-    const { duration = 0.3, delay = 0, staggerChildren = 0.3 } = config;
+    const { duration = 0.3, delay = 0, staggerChildren = 0.2 } = config;
 
     return {
-        // duration,
-        // delay,
-        when: "beforeChildren",
-        delayChildren: stagger(staggerChildren),
+        duration,
+        delayChildren: stagger(staggerChildren, { startDelay: delay }),
     };
 }
 
@@ -42,7 +40,6 @@ export function getDefaultPostTransition(config: BaseAnimationConfig): Transitio
 
     return {
         duration,
-        delay,
-        when: "afterChildren",
+        delayChildren: delay,
     };
 }
