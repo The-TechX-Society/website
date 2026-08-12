@@ -39,7 +39,7 @@ export default function UITest() {
                 <i>What is up everyone?</i>
             </p>
 
-            <Div className="space-y-3" animationScheme="scrollFadeIn">
+            <Div className="space-y-3 p-2 bg-blue-800" animationScheme={{ type: "scrollFadeIn", delay: 1.2, duration: 1.2, startY: 50 }}>
                 <Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>
                     Hello there
                 </Button>

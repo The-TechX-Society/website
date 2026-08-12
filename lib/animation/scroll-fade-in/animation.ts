@@ -1,7 +1,7 @@
 // builtin
 
 // external
-import { stagger, type MotionProps } from "motion/react";
+import type { MotionProps } from "motion/react";
 
 // internal
 import { getDefaultPostTransition, getDefaultPreTransition } from "../motion-props";
@@ -21,29 +21,39 @@ export function getScrollFadeInMotionProps(
 ): MotionProps {
     const { startX = 0, startY = 10, startOpacity = 0, endOpacity = 1 } = config;
 
-    const variants = {
+    const baseVariants = {
         visible: {
             x: 0,
             y: 0,
             opacity: endOpacity,
-            transition: getDefaultPreTransition(config),
         },
         hidden: {
             x: startX,
             y: startY,
             opacity: startOpacity,
-            transition: getDefaultPostTransition(config),
         },
     };
 
+
     if (isChild) {
         return {
-            variants,
+            variants: baseVariants,
         };
     }
 
+    const parentVariants = {
+        visible: {
+            ...baseVariants.visible,
+            transition: getDefaultPreTransition(config)
+        },
+        hidden: {
+            ...baseVariants.hidden,
+            transition: getDefaultPostTransition(config)
+        }
+    }
+
     return {
-        variants,
+        variants: parentVariants,
         initial: "hidden",
         whileInView: "visible",
     };
