@@ -24,7 +24,7 @@ export default function UITest() {
                 <i>What is up everyone?</i>
             </p>
 
-            <p style={{ fontWeight: 500 }}>What is up everyone?</p>
+            <p className="font-colonius">Tech<span className="font-garamond"><b><i>X</i></b></span></p>
             <p style={{ fontWeight: 500 }}>
                 <i>What is up everyone?</i>
             </p>
