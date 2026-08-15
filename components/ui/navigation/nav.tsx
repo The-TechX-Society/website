@@ -16,11 +16,12 @@ import "./nav.css";
 interface NavigationProps extends ColoredComponent, AnimatedComponent { }
 
 export function Navigation({ colorScheme }: NavigationProps) {
+
     return (
         <NavigationMenu.Root className={`nav-root ${colorScheme}`}>
             <div className="nav-logo-container">
                 <Link href="/" className="nav-logo-link">
-                    <Image src="/logos/techx_dark.png" alt="logo" width={1000} height={250} />
+                    <Image src="/logos/techx_light.png" alt="logo" width={1000} height={250} loading="eager" />
                 </Link>
             </div>
 

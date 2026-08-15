@@ -1,10 +1,15 @@
 .nav-root {
     box-sizing: border-box;
-    color: oklch(14.5% 0 0deg);
+    color: var(--nav-text-color);
     width: 100%;
     height: max-content;
-    padding: 4px 16px;
-    background-color: white;
+    padding: 16px 8px;
+    border-bottom: 1px solid var(--nav-border-color);
+    background-color: var(--nav-bg-color);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -68,27 +73,47 @@
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    color: oklch(14.5% 0 0deg);
+    color: var(--nav-trg-color);
     -webkit-user-select: none;
     user-select: none;
     text-decoration: none;
 
     @media (hover: hover) {
         &:hover {
-            background-color: oklch(97% 0 0deg);
+            background-color: var(--nav-trg-bg-hover-color);
         }
     }
 
     &[data-pressed] {
-        background-color: oklch(97% 0 0deg);
+        background-color: var(--nag-trg-bg-pressed-color);
     }
 
     &:focus-visible {
-        outline: 2px solid oklch(14.5% 0 0deg);
+        outline: 2px solid var(--nav-trg-ol-focus-color);
         outline-offset: -1px;
     }
 
     @media (max-width: 640px) {
         padding: 0 0.5rem;
     }
+}
+
+.primary {
+    --nav-text-color: var(--neutral-3);
+    --nav-border-color: var(--neutral-4);
+    --nav-bg-color: var(--neutral-1);
+    --nav-trg-color: var(--nav-text-color);
+    --nav-trg-bg-hover-color: var(--primary-2);
+    --nav-trg-bg-pressed-color: var(--primary-3);
+    --nav-trg-ol-focus-color: var(--primary-1);
+}
+
+.accent {
+    --nav-text-color: var(--neutral-3);
+    --nav-border-color: var(--neutral-3);
+    --nav-bg-color: var(--neutral-1);
+    --nav-trg-color: var(--nav-text-color);
+    --nav-trg-bg-hover-color: var(--accent-2);
+    --nav-trg-bg-pressed-color: var(--accent-3);
+    --nav-trg-ol-focus-color: var(--accent-1);
 }
