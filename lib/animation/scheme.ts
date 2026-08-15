@@ -15,6 +15,6 @@ type AnimationType = AnimationConfig["type"];
 export type AnimationScheme = AnimationType | AnimationConfig | MotionProps;
 
 export interface AnimatedComponent {
-    animationScheme?: AnimationScheme;
-    childAnimation?: boolean;
+	animationScheme?: AnimationScheme;
+	childAnimation?: boolean;
 }
