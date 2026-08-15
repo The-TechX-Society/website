@@ -8,38 +8,41 @@ import { throwIfNotExhaustive } from "@/lib/utils/type-safety";
 import type { AnimationScheme, AnimationConfig } from "./scheme";
 import { getScrollFadeInMotionProps } from "./scroll-fade-in/animation";
 import type { BaseAnimationConfig } from "./configs";
+import { getEntryFadeInMotionProps } from "./entry-fade-in/animation";
 
 export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): MotionProps {
-	if (!scheme) return {};
+    if (!scheme) return {};
 
-	if (typeof scheme === "object" && !("type" in scheme)) {
-		return scheme;
-	}
+    if (typeof scheme === "object" && !("type" in scheme)) {
+        return scheme;
+    }
 
-	const config: AnimationConfig = typeof scheme === "string" ? { type: scheme } : scheme;
+    const config: AnimationConfig = typeof scheme === "string" ? { type: scheme } : scheme;
 
-	switch (config.type) {
-		case "scrollFadeIn":
-			return getScrollFadeInMotionProps(config, isChild);
-		default:
-			throwIfNotExhaustive(config);
-	}
+    switch (config.type) {
+        case "scrollFadeIn":
+            return getScrollFadeInMotionProps(config, isChild);
+        case "entryFadeIn":
+            return getEntryFadeInMotionProps(config, isChild);
+        default:
+            throwIfNotExhaustive(config);
+    }
 }
 
 export function getDefaultPreTransition(config: BaseAnimationConfig): Transition {
-	const { duration = 0.3, delay = 0, staggerChildren = 0.2 } = config;
+    const { duration = 0.3, delay = 0, staggerChildren = 0.2 } = config;
 
-	return {
-		duration,
-		delayChildren: stagger(staggerChildren, { startDelay: delay }),
-	};
+    return {
+        duration,
+        delayChildren: stagger(staggerChildren, { startDelay: delay }),
+    };
 }
 
 export function getDefaultPostTransition(config: BaseAnimationConfig): Transition {
-	const { duration = 0.3, delay = 0 } = config;
+    const { duration = 0.3, delay = 0 } = config;
 
-	return {
-		duration,
-		delayChildren: delay,
-	};
+    return {
+        duration,
+        delayChildren: delay,
+    };
 }
