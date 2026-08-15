@@ -11,40 +11,46 @@ import type { BaseAnimationConfig } from "./configs";
 import { getEntryFadeInMotionProps } from "./entry-fade-in/animation";
 
 export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): MotionProps {
-	if (!scheme) return {};
+    if (!scheme) return {};
 
-	if (typeof scheme === "object" && !("type" in scheme)) {
-		return scheme;
-	}
+    if (typeof scheme === "object" && !("type" in scheme)) {
+        return scheme;
+    }
 
-	const config: AnimationConfig = typeof scheme === "string" ? { type: scheme } : scheme;
+    const config: AnimationConfig = typeof scheme === "string" ? { type: scheme } : scheme;
 
-	switch (config.type) {
-		case "scrollFadeIn":
-			return getScrollFadeInMotionProps(config, isChild);
-		case "entryFadeIn":
-			return getEntryFadeInMotionProps(config, isChild);
-		default:
-			throwIfNotExhaustive(config);
-	}
+    switch (config.type) {
+        case "scrollFadeIn":
+            return getScrollFadeInMotionProps(config, isChild);
+        case "entryFadeIn":
+            return getEntryFadeInMotionProps(config, isChild);
+        default:
+            throwIfNotExhaustive(config);
+    }
 }
 
-export function getDefaultPreTransition(config: BaseAnimationConfig): Transition {
-	const { duration = 0.3, delay = 0, delayChildren = 0, staggerChildren = 0.2 } = config;
+export function getDefaultParentPreTransition(config: BaseAnimationConfig): Transition {
+    const { duration = 0.3, delay = 0, delayChildren = 0, staggerChildren = 0.2 } = config;
 
-	return {
-		duration,
-		delay,
-		delayChildren: stagger(staggerChildren, { startDelay: delayChildren }),
-	};
+    return {
+        duration,
+        delay,
+        delayChildren: stagger(staggerChildren, { startDelay: delayChildren }),
+    };
 }
 
-export function getDefaultPostTransition(config: BaseAnimationConfig): Transition {
-	const { duration = 0.3, delay = 0, delayChildren = 0 } = config;
+export function getDefaultParentPostTransition(config: BaseAnimationConfig): Transition {
+    const { duration = 0.3, delay = 0, delayChildren = 0 } = config;
 
-	return {
-		duration,
-		delay,
-		delayChildren,
-	};
+    return {
+        duration,
+        delay,
+        delayChildren,
+    };
+}
+
+export function getDefaultChildTransition(config: BaseAnimationConfig): Transition {
+    const { duration = 0.3 } = config;
+
+    return { duration }
 }
