@@ -9,7 +9,7 @@ import Navigation from "@/components/ui/navigation";
 export default function Home() {
     return (
         <main>
-            <Navigation colorScheme="primary" />
+            <Navigation colorScheme="primary" animationScheme="entryFadeIn" />
 
             <div className="space-y-24">
                 <h1>Why Hello There!</h1>

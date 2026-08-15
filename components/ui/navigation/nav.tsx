@@ -12,15 +12,15 @@ import { motion, useScroll, useTransform } from "motion/react";
 // internal
 import type { ColoredComponent } from "@/lib/color";
 import "./nav.css";
+import { type AnimatedComponent, getMotionProps } from "@/lib/animation";
 
 
 const SCROLL_ENDPOINTS_PX = [30, 120];
 const PADDING_ENDPOINTS_PX = [24, 8];
 
+interface NavigationProps extends ColoredComponent, AnimatedComponent { }
 
-interface NavigationProps extends ColoredComponent { }
-
-export function Navigation({ colorScheme }: NavigationProps) {
+export function Navigation({ animationScheme, childAnimation, colorScheme }: NavigationProps) {
     const { scrollY } = useScroll();
 
     const paddingTop = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
@@ -30,10 +30,13 @@ export function Navigation({ colorScheme }: NavigationProps) {
         <NavigationMenu.Root
             className={`nav-root ${colorScheme}`}
             render={
-                <motion.nav style={{
-                    paddingTop,
-                    paddingBottom
-                }} />
+                <motion.nav
+                    style={{
+                        paddingTop,
+                        paddingBottom
+                    }}
+                    {...getMotionProps(animationScheme, childAnimation)}
+                />
             }
         >
             <div className="nav-logo-container">
