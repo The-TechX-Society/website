@@ -13,13 +13,18 @@ import { motion, useScroll, useTransform } from "motion/react";
 import type { ColoredComponent } from "@/lib/color";
 import "./nav.css";
 
+
+const SCROLL_ENDPOINTS_PX = [30, 120];
+const PADDING_ENDPOINTS_PX = [24, 8];
+
+
 interface NavigationProps extends ColoredComponent { }
 
 export function Navigation({ colorScheme }: NavigationProps) {
     const { scrollY } = useScroll();
 
-    const paddingTop = useTransform(scrollY, [30, 120], [24, 8]);
-    const paddingBottom = useTransform(scrollY, [30, 120], [24, 8]);
+    const paddingTop = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
+    const paddingBottom = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
 
     return (
         <NavigationMenu.Root
