@@ -5,14 +5,15 @@
 // internal
 import Navigation from "@/components/ui/navigation";
 
-
-export default function PublicLayout({ children }: Readonly<{
-    children: React.ReactNode;
+export default function PublicLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
 }>) {
-    return (
-        <>
-            <Navigation colorScheme="primary" />
-            {children}
-        </>
-    )
+	return (
+		<>
+			<Navigation colorScheme="primary" />
+			{children}
+		</>
+	);
 }
