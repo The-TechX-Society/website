@@ -10,9 +10,9 @@ import Navigation from "@/components/ui/navigation";
 export default function Home() {
     return (
         <main>
-            <Navigation colorScheme="primary" animationScheme={{ type: "entryFadeIn", delay: 1, duration: 0.7 }} />
+            <Navigation colorScheme="primary" animationScheme={{ type: "entryFadeIn", delay: 0.3, duration: 1.7 }} />
 
-            <Div className="space-y-24" animationScheme={{ type: "entryFadeIn", delay: 2.0, duration: 0.2, startY: 20 }}>
+            <Div className="mt-6 space-y-24" animationScheme={{ type: "entryFadeIn", delay: 1.5, duration: 0.5, startY: 20 }}>
                 <h1>Why Hello There!</h1>
 
                 <p style={{ fontWeight: 300 }}>What is up everyone?</p>

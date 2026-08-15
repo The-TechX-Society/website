@@ -30,19 +30,21 @@ export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): Mot
 }
 
 export function getDefaultPreTransition(config: BaseAnimationConfig): Transition {
-    const { duration = 0.3, delay = 0, staggerChildren = 0.2 } = config;
+    const { duration = 0.3, delay = 0, delayChildren = 0, staggerChildren = 0.2 } = config;
 
     return {
         duration,
-        delayChildren: stagger(staggerChildren, { startDelay: delay }),
+        delay,
+        delayChildren: stagger(staggerChildren, { startDelay: delayChildren }),
     };
 }
 
 export function getDefaultPostTransition(config: BaseAnimationConfig): Transition {
-    const { duration = 0.3, delay = 0 } = config;
+    const { duration = 0.3, delay = 0, delayChildren = 0 } = config;
 
     return {
         duration,
-        delayChildren: delay,
+        delay,
+        delayChildren,
     };
 }
