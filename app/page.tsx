@@ -3,6 +3,8 @@
 // external
 
 // internal
+import IntroHeader from "@/components/(public)/home/intro-header";
+import Button from "@/components/ui/button";
 import Div from "@/components/ui/div";
 import Navigation from "@/components/ui/navigation";
 
@@ -14,17 +16,21 @@ export default function Home() {
                 animationScheme={{ type: "entryFadeIn", delay: 0.3, duration: 1.7 }}
             />
 
-            <Div
-                className="pt-36 px-3 space-y-16"
-                animationScheme={{ type: "entryFadeIn", delayChildren: 1.5, staggerChildren: 0.4 }}
-            >
-                <Div animationScheme={{ type: "entryFadeIn", duration: 1.2, startY: 20 }} childAnimation>
-                    <h1 className="text-7xl text-center font-colonius">Some tagline here</h1>
+            <IntroHeader />
+
+            <Div className="text-center space-y-3 pt-4 pb-12" animationScheme="scrollFadeIn">
+                <Div animationScheme="scrollFadeIn" childAnimation>
+                    <h1 className="text-4xl font-colonius">Rush is now open!</h1>
                 </Div>
 
-                <Div animationScheme={{ type: "entryFadeIn", startY: 15 }} childAnimation>
-                    <h1 className="text-5xl text-center font-colonius">Because why not</h1>
+                <Div animationScheme="scrollFadeIn" childAnimation>
+                    <h1 className="text-2xl font-colonius">We'd love for you to join us!</h1>
                 </Div>
+
+                <div className="py-4 flex flex-row space-x-4 justify-center">
+                    <Button colorScheme="primary" animationScheme="scrollFadeIn" childAnimation>Rush Info</Button>
+                    <Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>Apply</Button>
+                </div>
             </Div>
         </main>
     );
