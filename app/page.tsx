@@ -18,7 +18,7 @@ export default function Home() {
 
             <IntroHeader />
 
-            <Div className="text-center space-y-3 pt-4 pb-12" animationScheme="scrollFadeIn">
+            <Div className="text-center space-y-3 py-16" animationScheme="scrollFadeIn">
                 <Div animationScheme="scrollFadeIn" childAnimation>
                     <h1 className="text-4xl font-colonius">Rush is now open!</h1>
                 </Div>
