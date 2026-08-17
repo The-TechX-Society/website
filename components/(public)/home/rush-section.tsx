@@ -16,7 +16,7 @@ export default function RushSection() {
             </Div>
 
             <Div animationScheme="scrollFadeIn" childAnimation>
-                <h1 className="text-2xl font-colonius">Some other description or other here</h1>
+                <h1 className="text-2xl">Some other description or other here</h1>
             </Div>
 
             <div className="py-4 flex flex-row space-x-4 justify-center">
