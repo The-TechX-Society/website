@@ -5,7 +5,7 @@
 // internal
 import Div from "@/components/ui/div";
 import "./intro-header.css";
-import Image from "next/image";
+import FaultyTerminal from "./FaultyTerminal";
 
 export default function IntroHeader() {
     return (
@@ -23,20 +23,26 @@ export default function IntroHeader() {
                 </Div>
             </div>
 
-            <Div
-                className="absolute top-0 left-0 -z-10 h-full w-full"
-                animationScheme={{ type: "entryFadeIn", duration: 2.4 }}
-                childAnimation
-            >
-                <Image
-                    src="/backgrounds/background_1.png"
-                    className=" h-full w-full object-cover opacity-80"
-                    alt="background"
-                    width={2000}
-                    height={1000}
-                    loading="eager"
+            <div className="absolute top-0 left-0 -z-10 h-full w-full">
+                <FaultyTerminal
+                    scale={3}
+                    pause={true}
+                    gridMul={[2, 1]}
+                    digitSize={1.2}
+                    timeScale={0.5}
+                    scanlineIntensity={0.5}
+                    glitchAmount={1}
+                    flickerAmount={1}
+                    noiseAmp={1}
+                    chromaticAberration={0}
+                    dither={1}
+                    curvature={0.1}
+                    tint="#38B6FF"
+                    pageLoadAnimation
+                    brightness={0.6}
+                    mouseReact={false}
                 />
-            </Div>
-        </Div>
+            </div>
+        </Div >
     )
 }
