@@ -10,6 +10,7 @@ import Image from "next/image";
 import Button from "@/components/ui/button";
 import Link from "next/link";
 import Div from "@/components/ui/div";
+import BeyondOurDoorsSection from "@/components/(public)/home/beyond-section";
 
 export default function Home() {
     return (
@@ -60,6 +61,8 @@ export default function Home() {
                     />
                 </Div>
             </div>
+
+            <BeyondOurDoorsSection />
             { /* Short what do we do + link to about us? */}
 
             { /* Reach out section? */}
