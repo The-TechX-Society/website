@@ -9,6 +9,7 @@ import type { AnimationScheme, AnimationConfig } from "./scheme";
 import { getScrollFadeInMotionProps } from "./scroll-fade-in/animation";
 import type { BaseAnimationConfig } from "./configs";
 import { getEntryFadeInMotionProps } from "./entry-fade-in/animation";
+import { getInfiniteSlideMotionProps } from "./infinite-slide/animation";
 
 export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): MotionProps {
     if (!scheme) return {};
@@ -24,6 +25,8 @@ export function getMotionProps(scheme?: AnimationScheme, isChild?: boolean): Mot
             return getScrollFadeInMotionProps(config, isChild);
         case "entryFadeIn":
             return getEntryFadeInMotionProps(config, isChild);
+        case "infiniteSlide":
+            return getInfiniteSlideMotionProps(config);
         default:
             throwIfNotExhaustive(config);
     }
