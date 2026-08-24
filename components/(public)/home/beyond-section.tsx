@@ -12,9 +12,13 @@ type Company = {
     logo: string;
 };
 
+type CompanyLoop = Company & {
+    index: number;
+}
+
 export default function BeyondOurDoorsSection() {
     const companies: Company[] = [
-        { name: 'Carnegie Mellon', logo: "/companies/Tanium.webp" },
+        { name: 'Carnegie Mellon', logo: "/companies/CMU.webp" },
         { name: 'JP Morgan', logo: "/companies/JPMC.webp" },
         { name: 'Meta', logo: "/companies/Meta.webp" },
         { name: 'Robinhood', logo: "/companies/Robinhood.webp" },
@@ -24,52 +28,52 @@ export default function BeyondOurDoorsSection() {
         { name: 'Tanium', logo: "/companies/Tanium.webp" },
     ];
 
+    const loopCompanies: CompanyLoop[] = [...companies.map(company => ({ ...company, index: 0 })), ...companies.map(company => ({ ...company, index: 1 }))]
+
     return (
-        <motion.section className="bg-techx-background flex flex-col items-center justify-center py-20 text-center text-white/80 md:py-28 lg:py-36">
-            <motion.p
-                className="text-techx-purple/80 mb-3 bg-white tracking-[0.2em] uppercase"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.7 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
+        <section className="bg-techx-background flex flex-col items-center justify-center py-20 text-center text-neutral-3 md:py-28 lg:py-36">
+            <p
+                className="text-neutral-1 mb-3 bg-neutral-3 tracking-[0.2em] px-0.5 uppercase"
             >
                 Beyond Our Doors
-            </motion.p>
+            </p>
 
-            <motion.h2
-                className="m-1.5 mb-10 text-4xl font-extrabold md:text-5xl lg:text-6xl"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.7 }}
-                transition={{ duration: 0.5, delay: 0.08, ease: 'easeOut' }}
+            <h2
+                className="m-1.5 mb-10 text-3xl font-bold md:text-4xl lg:text-5xl"
             >
                 Where our members have gone
-            </motion.h2>
+            </h2>
 
-            <motion.div
-                className="grid w-full max-w-6xl grid-cols-2 gap-6 px-6 md:grid-cols-3 lg:grid-cols-4"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: 0.12, ease: 'easeOut' }}
-            >
-                {companies.map((company) => (
-                    <div
-                        key={company.name}
-                        className="flex flex-col items-center justify-center rounded-xl bg-white/5 p-5"
-                    >
-                        <img
-                            src={company.logo}
-                            alt={`${company.name} logo`}
-                            className="mb-3 h-16 w-auto object-contain md:h-20"
-                            loading="lazy"
-                        />
-                        <p className="text-sm font-semibold tracking-wide text-white md:text-base">
-                            {company.name}
-                        </p>
-                    </div>
-                ))}
-            </motion.div>
-        </motion.section>
+            <div className="relative w-full overflow-hidden">
+                <motion.div
+                    className="flex items-center gap-x-8 w-max pl-8"
+                    initial={{
+                        translateX: "0%"
+                    }}
+                    animate={{
+                        translateX: "-50%"
+                    }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 8,
+                        ease: "linear"
+                    }}
+                >
+                    {loopCompanies.map((company) => (
+                        <div
+                            key={`${company.name}-${company.index}`}
+                            className="flex flex-col items-center justify-center rounded-xl bg-white/5 p-5"
+                        >
+                            <img
+                                src={company.logo}
+                                alt={`${company.name} logo`}
+                                className="mb-3 h-12 min-w-16 object-contain md:h-16"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
     );
 }

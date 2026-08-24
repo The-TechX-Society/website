@@ -1,14 +1,16 @@
-import { motion } from 'framer-motion';
+"use client"
+// builtin
+
+// external
+import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
-import Incubator from '../../assets/WhatWeDoPhotos/Incubator.webp';
-import Spring2025 from '../../assets/WhatWeDoPhotos/Spring 2025 Retreat.webp';
-import Fall2025 from '../../assets/WhatWeDoPhotos/Fall 2025 Retreat.webp';
+// internal
+
 
 type WhatWeDoInfo = {
     title: string;
     description: string;
-    image: string;
 };
 
 export default function WhatWeDoSection() {
@@ -16,29 +18,20 @@ export default function WhatWeDoSection() {
         {
             title: 'Lyceum',
             description:
-                'Learn skills related to full stack development, and product building. All under the guidance of our Headmaster. Mandatory for first semester.',
-            image: Spring2025,
+                'Learn skills related to full stack development, and product building. All under the guidance of our Headmaster. Mandatory for first semester.'
         },
         {
             title: 'Incubator',
             description:
-                'Gain real world experience under the guidance of the incubator chair and senior members of the society on projects that have impact.',
-            image: Incubator,
+                'Gain real world experience under the guidance of the incubator chair and senior members of the society on projects that have impact.'
         },
         {
             title: 'Social',
             description:
-                'Beyond weekly gatherings, TexhX holds a huge variety of social events including our semesterly retreats and the yearly CS Gala.',
-            image: Fall2025,
+                'Beyond weekly gatherings, TexhX holds a huge variety of social events including our semesterly retreats and the yearly CS Gala.'
         },
     ];
 
-    useEffect(() => {
-        whatWeDoInfoArray.forEach((item) => {
-            const img = new Image();
-            img.src = item.image;
-        });
-    });
     const [selected, setSelected] = useState(0);
 
     const handlePrevious = () => {
@@ -53,21 +46,6 @@ export default function WhatWeDoSection() {
 
     return (
         <motion.section className="relative overflow-hidden py-20 text-center text-white/80 md:py-28 lg:py-36">
-            <motion.div
-                key={whatWeDoInfoArray[selected].title}
-                className="absolute inset-0"
-                initial={{ opacity: 0.2 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
-            >
-                <img
-                    src={whatWeDoInfoArray[selected].image}
-                    alt=""
-                    className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/70" />
-            </motion.div>
-
             <div className="relative z-10 flex flex-col items-center justify-center px-4">
                 <motion.p
                     className="text-techx-purple/80 mb-3 bg-white tracking-[0.2em] uppercase"
