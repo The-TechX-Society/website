@@ -2,19 +2,11 @@
 // builtin
 
 // external
-import { motion } from 'framer-motion';
 
 // internal
+import type { Company } from '@/lib/types/main-page';
+import SlidingCompanies from './beyond-section/sliding-companies';
 
-
-type Company = {
-    name: string;
-    logo: string;
-};
-
-type CompanyLoop = Company & {
-    index: number;
-}
 
 export default function BeyondOurDoorsSection() {
     const companies: Company[] = [
@@ -27,8 +19,6 @@ export default function BeyondOurDoorsSection() {
         { name: 'Stripe', logo: "/companies/Stripe.webp" },
         { name: 'Tanium', logo: "/companies/Tanium.webp" },
     ];
-
-    const loopCompanies: CompanyLoop[] = [...companies.map(company => ({ ...company, index: 0 })), ...companies.map(company => ({ ...company, index: 1 }))]
 
     return (
         <section className="bg-techx-background flex flex-col items-center justify-center py-20 text-center text-neutral-3 md:py-28 lg:py-36">
@@ -45,34 +35,7 @@ export default function BeyondOurDoorsSection() {
             </h2>
 
             <div className="relative w-full overflow-hidden">
-                <motion.div
-                    className="flex items-center gap-x-8 w-max pl-8"
-                    initial={{
-                        translateX: "0%"
-                    }}
-                    animate={{
-                        translateX: "-50%"
-                    }}
-                    transition={{
-                        repeat: Infinity,
-                        duration: 8,
-                        ease: "linear"
-                    }}
-                >
-                    {loopCompanies.map((company) => (
-                        <div
-                            key={`${company.name}-${company.index}`}
-                            className="flex flex-col items-center justify-center rounded-xl bg-white/5 p-5"
-                        >
-                            <img
-                                src={company.logo}
-                                alt={`${company.name} logo`}
-                                className="mb-3 h-12 min-w-16 object-contain md:h-16"
-                                loading="lazy"
-                            />
-                        </div>
-                    ))}
-                </motion.div>
+                <SlidingCompanies companies={companies} />
             </div>
         </section>
     );
