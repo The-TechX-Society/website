@@ -23,9 +23,8 @@ export default function RushSection() {
                 <Button colorScheme="primary" animationScheme="scrollFadeIn" childAnimation>
                     <Link href="/rush">More Info</Link>
                 </Button>
-                <Button colorScheme="accent" animationScheme="scrollFadeIn" disabled childAnimation>
-                    Open soon...
-                    {/* <Link href="/rush">Apply</Link> <-- keep disabled until we release application form */}
+                <Button colorScheme="accent" animationScheme="scrollFadeIn" childAnimation>
+                    <Link href="https://forms.gle/7NqL1rS4AQZT6khz5">Apply</Link>
                 </Button>
             </div>
         </Div>
