@@ -17,60 +17,60 @@ import { type AnimatedComponent, getMotionProps } from "@/lib/animation";
 const SCROLL_ENDPOINTS_PX = [30, 120];
 const PADDING_ENDPOINTS_PX = [24, 8];
 
-interface NavigationProps extends ColoredComponent, AnimatedComponent { }
+interface NavigationProps extends ColoredComponent, AnimatedComponent {}
 
 export function Navigation({ animationScheme, childAnimation, colorScheme }: NavigationProps) {
-    const { scrollY } = useScroll();
+	const { scrollY } = useScroll();
 
-    const paddingTop = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
-    const paddingBottom = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
+	const paddingTop = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
+	const paddingBottom = useTransform(scrollY, SCROLL_ENDPOINTS_PX, PADDING_ENDPOINTS_PX);
 
-    return (
-        <NavigationMenu.Root
-            className={`nav-root ${colorScheme}`}
-            render={
-                <motion.nav
-                    style={{
-                        paddingTop,
-                        paddingBottom,
-                    }}
-                    {...getMotionProps(animationScheme, childAnimation)}
-                />
-            }
-        >
-            <div className="nav-logo-container">
-                <Link href="/" className="nav-logo-link">
-                    <Image
-                        src="/logos/techx_light.png"
-                        alt="logo"
-                        width={1000}
-                        height={250}
-                        loading="eager"
-                    />
-                </Link>
-            </div>
+	return (
+		<NavigationMenu.Root
+			className={`nav-root ${colorScheme}`}
+			render={
+				<motion.nav
+					style={{
+						paddingTop,
+						paddingBottom,
+					}}
+					{...getMotionProps(animationScheme, childAnimation)}
+				/>
+			}
+		>
+			<div className="nav-logo-container">
+				<Link href="/" className="nav-logo-link">
+					<Image
+						src="/logos/techx_light.png"
+						alt="logo"
+						width={1000}
+						height={250}
+						loading="eager"
+					/>
+				</Link>
+			</div>
 
-            <NavigationMenu.List className="nav-list">
-                <NavigationMenu.Item>
-                    <Link className="nav-trigger" href="/rush">
-                        Rush
-                    </Link>
-                </NavigationMenu.Item>
+			<NavigationMenu.List className="nav-list">
+				<NavigationMenu.Item>
+					<Link className="nav-trigger" href="/rush">
+						Rush
+					</Link>
+				</NavigationMenu.Item>
 
-                {/* <NavigationMenu.Item>
+				{/* <NavigationMenu.Item>
 					<Link className="nav-trigger" href="/about">
 						Who We Are
 					</Link>
 				</NavigationMenu.Item> */}
 
-                <NavigationMenu.Item>
-                    <Link className="nav-trigger" href="/contact">
-                        Contact Us
-                    </Link>
-                </NavigationMenu.Item>
-            </NavigationMenu.List>
+				<NavigationMenu.Item>
+					<Link className="nav-trigger" href="/contact">
+						Contact Us
+					</Link>
+				</NavigationMenu.Item>
+			</NavigationMenu.List>
 
-            <div className="nav-right-slot" />
-        </NavigationMenu.Root>
-    );
+			<div className="nav-right-slot" />
+		</NavigationMenu.Root>
+	);
 }
