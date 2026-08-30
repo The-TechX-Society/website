@@ -2,12 +2,14 @@
 // builtin
 
 // external
+import { usePathname } from "next/navigation"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 // internal
 import Div from "@/components/ui/div"
 import Button from "@/components/ui/button"
-import Link from "next/link"
+import "./application-countdown.css"
 
 const DEADLINE = new Date(2026, 8, 3, 23, 59, 59, 999).valueOf()
 
@@ -17,7 +19,9 @@ interface ApplicationCountdownProps {
 
 
 export default function ApplicationCountdown({ deadline }: ApplicationCountdownProps) {
+    const pathname = usePathname();
     const [timeRemaining, setTimeRemaining] = useState<string>("")
+
 
     useEffect(() => {
         setTimeRemaining(formatTimeDiff(deadline.valueOf() - Date.now()));
@@ -31,7 +35,8 @@ export default function ApplicationCountdown({ deadline }: ApplicationCountdownP
 
     return (
         <Div
-            className="flex flex-col items-center justify-center py-20 space-y-12 text-center"
+            key={pathname}
+            className="flex flex-col items-center justify-center py-20 space-y-12 text-center h-screen-remaining"
             animationScheme={{ type: "entryFadeIn", delayChildren: 0.3, staggerChildren: 0.5 }}
         >
             <Div animationScheme="entryFadeIn" childAnimation>
