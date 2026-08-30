@@ -1,4 +1,5 @@
 "use client"
+import Div from "@/components/ui/div";
 // builtin 
 
 // external
@@ -28,12 +29,16 @@ export default function EventCard({ event }: EventCardProps) {
     }, [event.time])
 
     const statusStyles = (status === "over") ? "text-neutral-4 line-through" :
-        (status === "happening") ? "text-primary-1" : "";
+        (status === "happening") ? "text-primary-1 text-3xl" : "text-2xl";
 
     return (
-        <div className={`text-center text-2xl ${statusStyles}`}>
+        <Div
+            className={`text-center ${statusStyles}`}
+            animationScheme="scrollFadeIn"
+            childAnimation
+        >
             {event.name} @ {formatDate(event.time)} @ {event.location}
-        </div>
+        </Div>
     )
 }
 
