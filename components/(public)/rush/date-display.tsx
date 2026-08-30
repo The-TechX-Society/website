@@ -1,32 +1,51 @@
 "use client"
-
-import { useEffect, useState } from "react"
-
 // builtin
 
 // external
+import { useEffect, useState } from "react"
 
 // internal
+import Div from "@/components/ui/div"
+import Button from "@/components/ui/button"
+import Link from "next/link"
 
+const DEADLINE = new Date(2026, 8, 3, 23, 59, 59, 999).valueOf()
 
 export default function DateDisplay() {
     const [timeRemaining, setTimeRemaining] = useState<string>("")
 
-    const deadline = new Date(2026, 8, 3, 23, 59, 59, 999).valueOf()
-
-    // biome-ignore lint/correctness/useExhaustiveDependencies: Run on interval
     useEffect(() => {
+        setTimeRemaining(formatTimeDiff(DEADLINE - Date.now()));
+
         const intervalId = setInterval(() => {
-            setTimeRemaining(formatTimeDiff(deadline - Date.now()));
+            setTimeRemaining(formatTimeDiff(DEADLINE - Date.now()));
         }, 1000);
 
         return () => clearInterval(intervalId);
     }, [])
 
     return (
-        <div>
-            Formal Rush Applications close in {timeRemaining}.
-        </div>
+        <Div
+            className="flex flex-col items-center justify-center py-20 space-y-12 text-center"
+            animationScheme={{ type: "entryFadeIn", delayChildren: 0.3, staggerChildren: 0.5 }}
+        >
+            <Div animationScheme="entryFadeIn" childAnimation>
+                <h1 className="text-3xl uppercase bg-neutral-3 text-neutral-1">Applications close in</h1>
+            </Div>
+
+            <Div animationScheme="entryFadeIn" childAnimation>
+                <h1 className="text-9xl tracking-widest font-extrabold">{timeRemaining}</h1>
+            </Div>
+
+            <Button
+                className="!text-2xl !px-4 !py-5"
+                colorScheme="accent"
+                animationScheme="entryFadeIn"
+                childAnimation
+            >
+                <Link href="https://forms.gle/7NqL1rS4AQZT6khz5">Apply</Link>
+            </Button>
+        </Div >
     )
 }
 
