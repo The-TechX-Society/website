@@ -13,27 +13,27 @@ import { type AnimatedComponent, getMotionProps } from "@/lib/animation";
 import { cn } from "@/lib/tailwind/utils";
 
 interface ButtonProps
-    extends ComponentProps<typeof BaseButton>,
-    AnimatedComponent,
-    ColoredComponent { }
+	extends ComponentProps<typeof BaseButton>,
+		AnimatedComponent,
+		ColoredComponent {}
 
 export function Button({
-    children,
-    ref,
-    animationScheme,
-    childAnimation,
-    colorScheme,
-    className,
-    ...props
+	children,
+	ref,
+	animationScheme,
+	childAnimation,
+	colorScheme,
+	className,
+	...props
 }: ButtonProps) {
-    return (
-        <BaseButton
-            ref={ref}
-            className={cn(`button ${colorScheme}`, className)}
-            render={<motion.button {...getMotionProps(animationScheme, childAnimation)} />}
-            {...props}
-        >
-            {children}
-        </BaseButton>
-    );
+	return (
+		<BaseButton
+			ref={ref}
+			className={cn(`button ${colorScheme}`, className)}
+			render={<motion.button {...getMotionProps(animationScheme, childAnimation)} />}
+			{...props}
+		>
+			{children}
+		</BaseButton>
+	);
 }
