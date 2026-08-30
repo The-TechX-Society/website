@@ -18,7 +18,7 @@ export default function EventsSection({ events }: EventsSectionProps) {
 
     return (
         <Div
-            className="space-y-12 pt-8 pb-52"
+            className="space-y-12 pt-8 pb-52 px-4"
             animationScheme="scrollFadeIn"
         >
             {
