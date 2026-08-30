@@ -11,18 +11,23 @@ import Link from "next/link"
 
 const DEADLINE = new Date(2026, 8, 3, 23, 59, 59, 999).valueOf()
 
-export default function DateDisplay() {
+interface ApplicationCountdownProps {
+    deadline: Date;
+}
+
+
+export default function ApplicationCountdown({ deadline }: ApplicationCountdownProps) {
     const [timeRemaining, setTimeRemaining] = useState<string>("")
 
     useEffect(() => {
-        setTimeRemaining(formatTimeDiff(DEADLINE - Date.now()));
+        setTimeRemaining(formatTimeDiff(deadline.valueOf() - Date.now()));
 
         const intervalId = setInterval(() => {
             setTimeRemaining(formatTimeDiff(DEADLINE - Date.now()));
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, [])
+    }, [deadline])
 
     return (
         <Div
